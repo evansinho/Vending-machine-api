@@ -1,5 +1,17 @@
 import express from 'express';
-import cors from 'cors'
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const Database = process.env.DATABASE;
+
+// db config
+mongoose.connect(Database, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log( 'Database Connected' ))
+  .catch(err => console.log( err ));
 
 // Instantiate the app
 const app = express();
