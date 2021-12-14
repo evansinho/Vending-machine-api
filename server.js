@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import routes from './routes/index.js';
 
 dotenv.config();
 const Database = process.env.DATABASE;
@@ -21,6 +22,9 @@ const port = process.env.PORT || 5000;
 // middlewares
 app.use(cors())
 app.use(express.json({extended: false}));
+
+// routes
+app.use(routes);
 
 app.get('/', (req, res) => res.status(200).json({
   status: 200,
